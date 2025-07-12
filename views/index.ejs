@@ -1,0 +1,22 @@
+<%- include("includes/header") %>
+
+<h2>Code Snippets</h2>
+
+<% examples.forEach((example, index) => { %>
+  <div class="code-block">
+    <h3><%= example.title %></h3>
+    <pre><code id="code-<%= index %>"><%= example.code %></code></pre>
+    <button onclick="copyCode(<%= index %>)">Copy Code</button>
+  </div>
+<% }); %>
+
+<hr>
+
+<h2>Add a New Snippet</h2>
+<form action="/add-snippet" method="POST">
+  <input type="text" name="title" placeholder="Snippet title" required><br><br>
+  <textarea name="code" rows="6" cols="60" placeholder="Enter your code here..." required></textarea><br><br>
+  <button type="submit">Add Snippet</button>
+</form>
+
+<%- include("includes/footer") %>
